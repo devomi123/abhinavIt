@@ -1,0 +1,78 @@
+<div class="container-fluid">
+    <div class="container row">
+        <div class="col-lg-10">
+
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Name</th>
+                        <th>SKU</th>
+                        <th>Email</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Stock Level</th>
+                        <th>Edit/Delete</th>
+
+                    </tr>
+                    <tr *ngFor="let p of products; let i= index">
+                        <td>{{p.name}}</td>
+                        <td>{{p.sku}}</td>
+                        <td>{{p.email}}</td>
+                        <td>{{p.description}}</td>
+                        <td>{{p.price}}</td>
+                        <td>{{p.stock_level}}</td>
+
+                        <td>
+                            <span class="btn btn-primary" style="color: black;background-color: #673ab7;"><i
+                                    class="bi bi-pencil-fill" (click)="edit(p._id)"></i></span>
+                            <a class="btn btn-outline-warning "
+                                style="margin-left: 1%;color: black;background-color: #673ab7;" (click)="delete(p._id)"><i
+                                    class="bi bi-trash-fill"></i></a>
+                        </td>
+                    </tr>
+                </table>
+            <!-- </div> -->
+        </div>
+        <div class="col-lg-2">
+            <label for="" style="font-size: 15px;padding-top:  15px; ;"><b>Selected Products</b></label>
+            <hr>
+            <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
+                <input type="text" value="id" formControlName="id">
+                <div class="form-group">
+                    <label for="">Name</label><br>
+                    <input type="text" class="form-control" value="name" formControlName="name">
+                </div>
+                <div class="form-group">
+                    <label for="">SKU</label><br>
+                    <input type="text" class="form-control" value="sku" formControlName="sku">
+                </div>
+                <div class="form-group">
+                    <label for="">Email</label><br>
+                    <input type="text" class="form-control" value="email" formControlName="email">
+                </div>
+                <div class="form-group">
+                    <label for="">Price</label><br>
+                    <input type="text" class="form-control" value="peice" formControlName="price">
+                </div>
+                <div class="form-group">
+                    <label for="">Stock Level</label><br>
+                    <input type="text" class="form-control" value="stock_level" formControlName="stock_level">
+                </div>
+                <div class="form-group">
+                    <label for="">Description</label><br>
+                    <textarea name="" id="" cols="26" rows="1" class="form-control" value="description"
+                        formControlName="description"></textarea>
+                </div>
+                <hr>
+                <div>
+                    <button type="submit" class="btn btn-secondary" style="color: white;background-color: #673ab7;">
+                        Clear</button>
+                    <button type="submit" class="btn btn-primary "
+                        style="color: white;background-color: #673ab7;">Submit</button>
+                </div>
+            </form>
+        </div>
+
+
+
+    </div>
+</div>
